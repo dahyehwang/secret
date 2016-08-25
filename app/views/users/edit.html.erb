@@ -1,0 +1,18 @@
+<form action="/users/<%= @user[:id] %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="hidden" name="_method" value="patch" />
+	<p><label>Email: </label><input type="text" name="user2[email]" value="<%= @user[:email] %>" /></p>
+	<p><label>Name: </label><input type="text" name="user2[name]" value="<%= @user[:name] %>" /></p>
+	<p><label>Password: </label><input type="password" name="user2[password]" value="<%= @user[:password] %>" /></p>
+	<p><label>Confirm Password: </label><input type="password" name="user2[password_confirmation]" value="<%= @user[:password_confirmation] %>" /></p>
+	<p><input type="submit" name="update" value="Update" /></p>
+</form>
+<a href="/users/<%= @user.id %>" name="deleteAccount" id="deleteAccount"  data-method="delete">Delete Account</a>
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% end %>
+<% if flash[:success] %>
+	<p><%= flash[:success] %></p>
+<% end %>
